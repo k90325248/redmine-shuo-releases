@@ -1,10 +1,54 @@
 # Redmine Shuo
 
-Desktop time tracking application.
+原本 Redmine 開頁面慢，填個工時還得一直切來切去。Redmine Shuo 把常用的工時、議題和 GHP 出勤整理成桌面 App，少換幾次頁，也少打一些重複內容。
 
-This repository contains public release assets and installation notes only.
-Source code is maintained separately in a private repository.
+用原本的 Redmine 帳號登入，工時照樣存回原系統，填完在網站上也看得到。
 
-Supported platforms: macOS Apple Silicon and Windows x64.
+## 用起來差在哪？
 
-Stable installers will be available in Releases after validation.
+以平常在原站逐筆填寫、另外開 GHP 查出勤的流程來說：
+
+| 平常遇到的事                 | 在 Redmine Shuo 裡                   |
+| ---------------------------- | ------------------------------------ |
+| 切回頁面又要等資料           | 先顯示已載入的內容，再背景更新       |
+| 一天好幾項工作，要一直開表單 | 在同一天整理多筆工時，確認後送出     |
+| 連續幾天做差不多的事         | 把某天的紀錄帶到另一天，改一下就能填 |
+| 月底不知道漏了哪幾天         | 日曆看每日時數，待補清單幫你找缺漏   |
+| 日報寫完，還要再抄一次       | 匯入 Excel、配對議題，預覽後送出     |
+| 出勤、請假和工時要分開查     | 串接 GHP 後，在 App 裡一起看         |
+
+快取能減少重複等待，但第一次查詢和送出工時，仍要等 Redmine 與網路回應。
+
+## 常用功能
+
+- **工時日曆**：點日期看明細，直接新增、編輯或刪除。今天、本週填了多少，總覽也看得到。
+- **帶入與連續記錄**：複用某天的工時；開啟連續記錄後，全部送出成功就帶著內容前往下一工作天。
+- **待補提醒**：依結算期間找出漏填或不足的日期，串接 GHP 後也會考量已取得的請假資料。
+- **工時匯入**：支援 2026／民國 115 年 Excel 日報範本，也能從 GHP 出勤開始整理。配對議題、確認內容後才寫入 Redmine；Excel 原檔不上傳。
+- **議題樹**：展開父子議題、搜尋編號或名稱、篩選狀態，也能新增子議題。
+- **出勤與下班通知**：查看 GHP 打卡、請假與預計下班時間，開啟提醒後會在下班前通知你。需登入 GHP 並保持 App 執行。
+
+另外有深色模式、快捷鍵、系統匣入口和頁面操作導覽，日常填工時不用一直找瀏覽器分頁。
+
+送出前會檢查疑似重複紀錄，批次結果也會逐筆顯示。遇到「結果待確認」先查詢再重送，避免重複填入；未送出的草稿不會在關閉 App 後保留。
+
+## 下載與安裝
+
+前往 [下載最新正式版](https://github.com/k90325248/redmine-shuo-releases/releases/latest)，在 Assets 選擇安裝檔：
+
+| 平台                          | 下載檔案 | 安裝方式                                     |
+| ----------------------------- | -------- | -------------------------------------------- |
+| macOS Apple Silicon（M 系列） | `.dmg`   | 開啟後將 App 拖到 Applications，再從那裡啟動 |
+| Windows x64                   | `.exe`   | 執行安裝程式，依畫面完成安裝                 |
+
+目前沒有 Intel Mac 或 Windows ARM 原生版本。macOS 使用自簽憑證、尚未經 Apple 公證，Windows 尚未配置程式碼簽署，安裝時可能出現系統安全性提示；公司裝置請依組織規範安裝。
+
+## 更新與版本說明
+
+App 會定期檢查更新，也能到設定頁手動檢查。下載完成後，按「安裝」才會更新並重新啟動。沒有更新功能的舊版，請先手動安裝一次新版。
+
+- [查看各版本更新內容](https://github.com/k90325248/redmine-shuo-releases/releases)
+- 首次安裝選 `.dmg` 或 `.exe`；`.app.tar.gz`、`.sig`、`latest.json` 是給應用內更新使用的。
+- `SHA256SUMS.txt` 可用來核對下載檔案的 SHA-256。
+
+此 repository 只放公開安裝檔與說明，原始碼另行維護。
